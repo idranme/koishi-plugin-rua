@@ -1,0 +1,35 @@
+{
+  "name": "koishi-plugin-rua",
+  "description": "rua",
+  "version": "0.0.2",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idranme/koishi-plugin-rua.git"
+  },
+  "keywords": [
+    "chatbot",
+    "koishi",
+    "plugin",
+    "rua"
+  ],
+  "peerDependencies": {
+    "koishi": "^4.17.7"
+  },
+  "devDependencies": {
+    "@koishijs/plugin-help": "^2.4.3"
+  },
+  "koishi": {
+    "browser": true,
+    "description": {
+      "en": "rua",
+      "zh": "rua 一下群友"
+    }
+  }
+}
