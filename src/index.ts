@@ -26,10 +26,19 @@ export function apply(ctx: Context, cfg: Config) {
     const action = name.trim()
     if (!action) continue
     ctx.command(action, { hidden: cfg.hidden })
-      .action(async ({ session }, addition) => {
-        let source = session.username, target: string
+      .option('target', '-t <user>', {
+        type: (source) => {
+          const element = h.parse(source)[0]
+          if (element && element.type === 'at') {
+            return element.attrs
+          }
+          throw new Error('internal.invalid-user')
+        }
+      })
+      .action(async ({ session, options }, addition) => {
+        let source = session.username, target = options.target.name
         if (session.quote) {
-          target = getUserName(session.quote)
+          target ||= getUserName(session.quote)
         }
         let content = `${h.quote(session.messageId)}<b>${source}</b> ${action}了 `
         /*if (addition) {
