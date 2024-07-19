@@ -36,7 +36,7 @@ export function apply(ctx: Context, cfg: Config) {
         }
       })
       .action(async ({ session, options }, addition) => {
-        let source = session.username, target = options.target.name
+        let source = session.username, target = options.target?.name
         if (session.quote) {
           target ||= getUserName(session.quote)
         }
